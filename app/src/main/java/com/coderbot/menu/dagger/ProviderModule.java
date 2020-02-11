@@ -3,9 +3,7 @@ package com.coderbot.menu.dagger;
 import com.coderbot.menu.data.repository.RepositoryImpl;
 import com.coderbot.menu.domain.repository.Repository;
 import com.coderbot.menu.domain.usecase.GetMenu;
-
 import javax.inject.Singleton;
-
 import dagger.Module;
 import dagger.Provides;
 import okhttp3.OkHttpClient;
@@ -13,7 +11,6 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
-
 import static com.coderbot.menu.domain.utils.Constants.URL;
 
 @Module
@@ -33,7 +30,7 @@ class ProviderModule
 	@Provides
 	Repository provideRepository(Retrofit retrofit)
 	{
-		return new RepositoryImpl();
+		return new RepositoryImpl(retrofit);
 	}
 
 	@Singleton

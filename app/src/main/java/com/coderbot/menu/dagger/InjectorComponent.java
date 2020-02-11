@@ -1,17 +1,14 @@
 package com.coderbot.menu.dagger;
 
 import android.app.Application;
-
 import com.coderbot.menu.application.App;
-
 import javax.inject.Singleton;
-
 import dagger.BindsInstance;
 import dagger.Component;
 import dagger.android.AndroidInjectionModule;
 
 @Singleton
-@Component(modules = { AndroidInjectionModule.class, ProviderModule.class })
+@Component(modules = { AndroidInjectionModule.class, ProviderModule.class, InjectorFactory.class })
 public interface InjectorComponent
 {
 	void inject(App app);
