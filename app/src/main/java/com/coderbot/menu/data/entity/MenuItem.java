@@ -1,11 +1,55 @@
 package com.coderbot.menu.data.entity;
 
-public class MenuItem
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class MenuItem implements Parcelable
 {
 	private long id;
 	private String name;
 	private String photoUrl;
 	private String description;
+
+	public static final Parcelable.Creator CREATOR = new Parcelable.Creator()
+	{
+		public MenuItem createFromParcel(Parcel in)
+		{
+			return new MenuItem(in);
+		}
+
+		public MenuItem[] newArray(int size)
+		{
+			return new MenuItem[size];
+		}
+	};
+
+	public MenuItem()
+	{
+
+	}
+
+	public MenuItem(Parcel in)
+	{
+		this.id = in.readLong();
+		this.name = in.readString();
+		this.photoUrl = in.readString();
+		this.description = in.readString();
+	}
+
+	@Override
+	public int describeContents()
+	{
+		return 0;
+	}
+
+	@Override
+	public void writeToParcel(Parcel dest, int flags)
+	{
+		dest.writeLong(this.id);
+		dest.writeString(this.name);
+		dest.writeString(this.photoUrl);
+		dest.writeString(this.description);
+	}
 
 	public long getId()
 	{
@@ -29,7 +73,7 @@ public class MenuItem
 
 	public String getPhotoUrl()
 	{
-		return photoUrl;
+		return photoUrl != null ? photoUrl : "";
 	}
 
 	public void setPhotoUrl(String photoUrl)
@@ -46,4 +90,5 @@ public class MenuItem
 	{
 		this.description = description;
 	}
+
 }

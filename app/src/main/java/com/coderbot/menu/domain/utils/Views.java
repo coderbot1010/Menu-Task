@@ -1,12 +1,12 @@
 package com.coderbot.menu.domain.utils;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.model.GlideUrl;
 import com.bumptech.glide.load.model.LazyHeaders;
 import com.bumptech.glide.request.RequestOptions;
+import com.coderbot.menu.R;
 import com.coderbot.menu.presentation.view.loading.LoadingDialog;
 
 public class Views
@@ -44,24 +44,9 @@ public class Views
 			glideLoader(context, imageView, new GlideUrl(imageURl, new LazyHeaders.Builder().addHeader("Authorization", auth).build()));
 		}
 
-		public static void glideLoader(Context context, ImageView imageView, String imagePath)
-		{
-			Glide.with(context).load(imagePath).thumbnail(0.1f).into(imageView);
-		}
-
 		private static void glideLoader(Context context, ImageView imageView, GlideUrl uri)
 		{
-			Glide.with(context).load(uri).thumbnail(0.1f).into(imageView);
-		}
-
-		public static void load(Context context, String imageURl, String auth, ImageView imageView, Drawable placeHolder)
-		{
-			Glide.with(context).load(new GlideUrl(imageURl, new LazyHeaders.Builder().addHeader("Authorization", auth).build())).thumbnail(0.1f).apply(new RequestOptions().placeholder(placeHolder)).into(imageView);
-		}
-
-		public static void load(Context context, String imagePath, ImageView imageView, Drawable placeHolder)
-		{
-			Glide.with(context).load(imagePath).thumbnail(0.1f).apply(new RequestOptions().placeholder(placeHolder)).into(imageView);
+			Glide.with(context).load(uri).thumbnail(0.1f).apply(new RequestOptions().placeholder(context.getResources().getDrawable(R.mipmap.ic_launcher))).into(imageView);
 		}
 	}
 }
