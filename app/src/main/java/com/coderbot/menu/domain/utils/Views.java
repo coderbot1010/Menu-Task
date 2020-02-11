@@ -46,7 +46,7 @@ public class Views
 
 		private static void glideLoader(Context context, ImageView imageView, GlideUrl uri)
 		{
-			Glide.with(context).load(uri).thumbnail(0.1f).apply(new RequestOptions().placeholder(context.getResources().getDrawable(R.mipmap.ic_launcher))).into(imageView);
+			Glide.with(context).load(uri).thumbnail(0.1f).apply(new RequestOptions().placeholder(context.getResources().getDrawable(R.drawable.ic_menu))).into(imageView);
 		}
 	}
 }

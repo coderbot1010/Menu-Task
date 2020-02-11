@@ -22,7 +22,7 @@ public class DataBase
 	public void insert(ArrayList<MenuItem> items)
 	{
 		realm.beginTransaction();
-		realm.insert(items);
+		realm.insertOrUpdate(items);
 		realm.commitTransaction();
 	}
 }

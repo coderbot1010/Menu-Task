@@ -49,7 +49,7 @@ public class MenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 		if (!item.getPhotoUrl().isEmpty())
 			Views.ImageLoader.load(context, viewHolder.photo, item.getPhotoUrl(), "");
 		else
-			viewHolder.photo.setImageResource(R.mipmap.ic_launcher);
+			viewHolder.photo.setImageResource(R.drawable.ic_menu);
 	}
 
 	@Override

@@ -39,15 +39,15 @@ public class DetailsActivity extends AppCompatActivity
 	private void init()
 	{
 		photo = findViewById(R.id.photo);
-        description = findViewById(R.id.description);
+		description = findViewById(R.id.description);
 	}
 
 	private void setData()
 	{
-        description.setText(item.getDescription());
+		description.setText(item.getDescription());
 		if (!item.getPhotoUrl().isEmpty())
 			Views.ImageLoader.load(this, photo, item.getPhotoUrl(), "");
 		else
-			photo.setImageResource(R.mipmap.ic_launcher);
+			photo.setImageResource(R.drawable.ic_menu);
 	}
 }
