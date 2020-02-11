@@ -33,13 +33,21 @@ public class GetMenu
 			@Override
 			public void onSuccess(ArrayList<MenuItem> list)
 			{
+				repository.storeLocally(list);
 				emitter.onSuccess(list);
 			}
 
 			@Override
 			public void onError(Throwable ex)
 			{
-				emitter.onError(ex);
+				try
+				{
+					emitter.onSuccess(repository.selectLocally());
+				}
+				catch (Exception exe)
+				{
+					emitter.onError(exe);
+				}
 			}
 		}));
 	}

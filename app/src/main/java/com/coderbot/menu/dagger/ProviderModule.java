@@ -1,5 +1,6 @@
 package com.coderbot.menu.dagger;
 
+import com.coderbot.menu.data.realm.DataBase;
 import com.coderbot.menu.data.repository.RepositoryImpl;
 import com.coderbot.menu.domain.repository.Repository;
 import com.coderbot.menu.domain.usecase.GetMenu;
@@ -18,6 +19,13 @@ class ProviderModule
 {
 	@Singleton
 	@Provides
+	DataBase provideDatabase()
+	{
+		return new DataBase();
+	}
+
+	@Singleton
+	@Provides
 	Retrofit provideRetrofit()
 	{
 		HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
@@ -28,9 +36,9 @@ class ProviderModule
 
 	@Singleton
 	@Provides
-	Repository provideRepository(Retrofit retrofit)
+	Repository provideRepository(Retrofit retrofit, DataBase database)
 	{
-		return new RepositoryImpl(retrofit);
+		return new RepositoryImpl(retrofit, database);
 	}
 
 	@Singleton

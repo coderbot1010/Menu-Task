@@ -6,6 +6,7 @@ import com.coderbot.menu.dagger.DaggerInjectorComponent;
 import javax.inject.Inject;
 import dagger.android.DispatchingAndroidInjector;
 import dagger.android.HasActivityInjector;
+import io.realm.Realm;
 
 public class App extends Application implements HasActivityInjector
 {
@@ -22,6 +23,7 @@ public class App extends Application implements HasActivityInjector
 	public void onCreate()
 	{
 		super.onCreate();
+		Realm.init(this);
 		DaggerInjectorComponent.builder().application(this).build().inject(this);
 	}
 }

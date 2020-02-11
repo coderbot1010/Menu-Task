@@ -2,9 +2,12 @@ package com.coderbot.menu.data.entity;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
-public class MenuItem implements Parcelable
+public class MenuItem extends RealmObject implements Parcelable
 {
+	@PrimaryKey
 	private long id;
 	private String name;
 	private String photoUrl;

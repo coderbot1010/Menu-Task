@@ -9,4 +9,8 @@ import io.reactivex.Single;
 public interface Repository
 {
 	Single<ArrayList<MenuItem>> getMenu();
+
+	ArrayList<MenuItem> selectLocally();
+
+	void storeLocally(ArrayList<MenuItem> items);
 }
