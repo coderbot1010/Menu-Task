@@ -31,6 +31,14 @@ public class MenuItem extends RealmObject implements Parcelable
 
 	}
 
+	public MenuItem(long id, String name, String photoUrl, String description)
+	{
+		this.id = id;
+		this.name = name;
+		this.photoUrl = photoUrl;
+		this.description = description;
+	}
+
 	public MenuItem(Parcel in)
 	{
 		this.id = in.readLong();
